@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey chiquilla ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    background: #f5e5d7;
+    font-family: Georgia, serif;
+    color: #803d4c;
+}
+
+.carta {
+    width: 100%;
+    max-width: 430px;
+    min-height: 540px;
+    background: #fff9ef;
+    border: 5px double #c65c70;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px #9b586044;
+    text-align: center;
+    padding: 35px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.moño {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    font-size: 38px;
+}
+
+h1 {
+    color: #b3445c;
+    font-size: 29px;
+    margin-top: 35px;
+}
+
+.gato {
+    font-size: 85px;
+    margin: 22px 0;
+    animation: flotar 2s infinite ease-in-out;
+}
+
+@keyframes flotar {
+    50% { transform: translateY(-9px); }
+}
+
+.mensaje {
+    font-size: 19px;
+    line-height: 1.6;
+    min-height: 90px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    font-family: Georgia, serif;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+.si {
+    background: #d34e68;
+    color: white;
+}
+
+.no {
+    background: #e8b6bd;
+    color: #713342;
+}
+
+.decoracion {
+    font-size: 28px;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.carta-final {
+    display: none;
+    line-height: 1.8;
+    font-size: 17px;
+    animation: aparecer 1.2s;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.corazones {
+    font-size: 28px;
+    margin: 15px;
+}
+
+#contenido {
+    animation: aparecer .6s;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+
+<div class="moño">🎀</div>
+
+<div id="contenido">
+
+    <h1 id="titulo">Hey chiquilla ❤️</h1>
+
+    <div class="gato" id="gato">🐱</div>
+
+    <p class="mensaje" id="mensaje">
+        ¿Te puedo decir algo?
+    </p>
+
+    <div class="botones" id="botones">
+
+        <button class="si" onclick="respuestaSi()">
+            Sí 💗
+        </button>
+
+        <button class="no" onclick="respuestaNo()">
+            No 🙈
+        </button>
+
+    </div>
+
+</div>
+
+<div class="carta-final" id="cartaFinal">
+
+    <div class="corazones">💗🌷💗</div>
+
+    <h1>Para ti, chiquilla</h1>
+
+    <p>
+    Quiero que sepas que desde que llegaste
+    a mi vida te has convertido en alguien
+    muy especial para mí.
+    </p>
+
+    <p>
+    No sé cómo explicar todo lo que siento,
+    pero sí sé que quiero compartir contigo
+    muchos momentos, sonrisas, aventuras
+    y recuerdos bonitos.
+    </p>
+
+    <p>
+    Te amo muchísimo y quiero que nunca
+    olvides que siempre podrás contar conmigo,
+    en los días buenos y también en los difíciles.
+    </p>
+
+    <p>
+    Gracias por darme la oportunidad de
+    compartir esta historia contigo.
+    </p>
+
+    <h2 style="color:#c34c65">
+        Brindemos por nuestro amor ❤️
+    </h2>
+
+    <div class="corazones">🌹💕🌹</div>
+
+</div>
+
+<div class="decoracion">🌸</div>
+
+</div>
+
+<script>
+
+let vecesNo = 0;
+let etapa = "inicio";
+
+function mostrar(titulo, gato, mensaje) {
+
+    document.getElementById("titulo").textContent = titulo;
+    document.getElementById("gato").textContent = gato;
+    document.getElementById("mensaje").textContent = mensaje;
+
+    document.getElementById("contenido").style.animation = "none";
+
+    void document.getElementById("contenido").offsetWidth;
+
+    document.getElementById("contenido").style.animation = "aparecer .6s";
+}
+
+function respuestaSi() {
+
+    if (etapa === "inicio") {
+
+        etapa = "noviazgo";
+
+        mostrar(
+            "Tengo algo que preguntarte...",
+            "🥰",
+            "¿Puedo ser tu novio? ❤️"
+        );
+
+        return;
+    }
+
+    if (etapa === "noviazgo") {
+
+        etapa = "final";
+
+        mostrar(
+            "¡Brindemos por nuestro amor!",
+            "😍",
+            "¡Sabía que este momento sería especial! ❤️"
+        );
+
+        document.getElementById("botones").innerHTML =
+        '<button class="si" onclick="mostrarCarta()">Continuar 💌</button>';
+
+        return;
+    }
+
+}
+
+function respuestaNo() {
+
+    if (etapa === "inicio") {
+
+        vecesNo++;
+
+        if (vecesNo === 1) {
+
+            mostrar(
+                "¡¿Cómo te atreves?! 😂",
+                "😾",
+                "Cómo te atreves, vamos de nuevo."
+            );
+
+        } else {
+
+            mostrar(
+                "¡Última oportunidad! 🙈",
+                "🥺",
+                "Piénsalo otra vez, chiquilla."
+            );
+
+        }
+
+        return;
+    }
+
+    if (etapa === "noviazgo") {
+
+        mostrar(
+            "¡Pon atención! 😂",
+            "🐱",
+            "Intentemos de nuevo."
+        );
+
+        etapa = "inicio";
+
+        vecesNo = 0;
+
+        document.getElementById("botones").innerHTML =
+        '<button class="si" onclick="respuestaSi()">Sí 💗</button>' +
+        '<button class="no" onclick="respuestaNo()">No 🙈</button>';
+
+    }
+
+}
+
+function mostrarCarta() {
+
+    document.getElementById("contenido").style.display = "none";
+
+    document.getElementById("cartaFinal").style.display = "block";
+
+    document.querySelector(".carta").style.minHeight = "auto";
+
+}
+
+</script>
+
+</body>
+</html>
